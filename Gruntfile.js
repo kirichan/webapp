@@ -18,6 +18,8 @@ module.exports = function (grunt) {
       useminPrepare: 'grunt-usemin'
   });
 
+  grunt.loadNpmTasks('grunt-gh-pages');
+
   // Configurable paths
   var config = {
     app: 'app',
@@ -29,6 +31,20 @@ module.exports = function (grunt) {
 
     // Project settings
     config: config,
+
+    'gh-pages': {
+      options: {
+        base: 'dist',
+        user: {
+          name: 'kirichan',
+          email: 'kirichan4141@gmail.com'
+        }
+      },
+      src: [
+        '**/*',
+        '**/.*'
+      ]
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -341,9 +357,8 @@ module.exports = function (grunt) {
         'imagemin',
         'svgmin'
       ]
-    }
+    },
   });
-
 
   grunt.registerTask('serve', 'start the server and preview your app', function (target) {
 
